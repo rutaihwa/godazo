@@ -66,3 +66,7 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
+/media/videos/*
+!media/videos/.gitkeep
+/media/images/*
+!media/images/.gitkeep
