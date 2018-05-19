@@ -1,0 +1,26 @@
+{
+  "slides":[
+    {
+      "heading": "godazo",
+      "subheading": "Clean presentations."
+    },
+    {
+      "heading": "Why godazo?",
+      "keywords": ["Simple", "Clean", "Open", "Life is short focus on better things"]
+    },
+    {
+      "subheading": "How to get started",
+      "points": [
+        "Install godazo.",
+        "Make your presentation in json.",
+        "Practise your presentation.",
+        "Go dazzle your audience!"
+      ]
+    },
+    {
+      "heading": "Thanks",
+      "subheading": "Standing on shoulders of giants.",
+      "keywords": ["Go", "Revealjs"]
+    }
+  ]
+}
