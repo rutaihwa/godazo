@@ -18,3 +18,9 @@ Example `godazo -port="8081" -presentation="./home/user/devcon/keynote.json"`
 That tells godazo to run on port `8081` and do presentation `keynote.json` in user defined path.
 
 On your browser visit [`localhost:8081`](http://localhost:8081/) to see your presentation.
+
+## Todo
+
+* Don't be evil test your code - Writing tests
+
+* Future Features?

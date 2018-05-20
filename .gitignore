@@ -67,6 +67,6 @@ fabric.properties
 .idea/httpRequests
 
 /media/videos/*
-!media/videos/.gitkeep
+!/media/videos/.gitkeep
 /media/images/*
-!media/images/.gitkeep
+!/media/images/.gitkeep
