@@ -70,6 +70,9 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Make Gin on release mode
+	gin.SetMode(gin.ReleaseMode)
+
 	// Web server router
 	router := gin.Default()
 
@@ -96,6 +99,10 @@ func main() {
 		})
 	})
 
+	// Where will godazo be running at
+	fmt.Println("godazo will start running at http://localhost:" + *portPtr)
+
 	// Running the server
 	router.Run(":" + *portPtr)
+
 }
