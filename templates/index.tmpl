@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{if ne (len .title) 0 }} {{ .title }} {{else}} Presentation powered by godazo.{{end}}
+    </title>
+    <link rel="stylesheet" media="screen" href="/public/stylesheets/white.css">
+    <link rel="stylesheet" media="screen" href="/public/stylesheets/serif.css">
+    <link rel="stylesheet" media="screen" href="/public/stylesheets/reveal.css">
+    <link rel="shortcut icon" type="image/png" href="/public/images/favicon.png">
+</head>
+<body>
+<main role="main" class="reveal">
+    <div class="slides">
+    {{/* Iterating over slides */}}
+    {{ if ne (len .slides) 0 }}
+    {{ range $slide := .slides }}
+        <section>
+        {{/* Heading */}}
+        {{ if ne $slide.Heading "" }}
+            <section data-background-color="#dbdbdb">
+                <h1>{{ $slide.Heading }}</h1>
+            </section>
+        {{ end }}
+        {{/* Subheading */}}
+        {{ if ne $slide.Subheading "" }}
+            <section data-background-color="#ffffcc">
+                <p>{{ $slide.Heading }}</p>
+                <h2>{{ $slide.Subheading }}</h2>
+            </section>
+        {{ end }}
+        {{/* Keywords*/}}
+        {{ if ne (len $slide.Keywords) 0 }}
+        {{ range $keyword := $slide.Keywords }}
+            <section>{{$keyword}}</section>
+        {{ end }}
+        {{end}}
+        {{/* Images */}}
+        {{ if ne (len $slide.Images) 0 }}
+        {{ range $image := $slide.Images }}
+            <section>
+                <img data-src="/media/images/{{$image}}">
+            </section>
+        {{end}}
+        {{end}}
+        {{/* Videos */}}
+        {{ if ne (len $slide.Videos) 0 }}
+        {{ range $video := $slide.Videos }}
+            <section>
+                <video controls>
+                    <source data-src="/media/videos/{{$video}}" type="video/mp4">
+                </video>
+            </section>
+        {{end}}
+        {{end}}
+        {{/* Points */}}
+        {{ if ne (len $slide.Points) 0 }}
+            <section>
+            {{ range $point := $slide.Points }}
+                <p class="fragment highlight-current-red">{{$point}}</p>
+            {{end}}
+            </section>
+        {{end}}
+        </section>
+    {{end}}
+    {{else}}
+        <section>Just saying Hi</section>
+    {{end}}
+    </div>
+</main>
+{{/* Js */}}
+<script src="/public/javascripts/reveal.js" type="text/javascript"></script>
+<script src="/public/javascripts/init.js" type="text/javascript"></script>
+</body>
+</html>
