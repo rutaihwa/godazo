@@ -19,6 +19,10 @@ That tells godazo to run on port `8081` and do presentation `keynote.json` in us
 
 On your browser visit [`localhost:8081`](http://localhost:8081/) to see your presentation.
 
+## Thanks
+
+The project is written in Go, and make heavy dependence on Gin and Revealjs.
+
 ## Todo
 
 * Don't be evil test your code - Writing tests
