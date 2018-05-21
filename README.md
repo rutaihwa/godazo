@@ -2,11 +2,13 @@
 Stupid simple presenter written in Go.
 
 ## Quick start
-Install godazo
+Install godazo 
 
-Runs godazo example with default settings.
+`% go get github.com/rutaihwa/godazo`
 
-On your terminal run `godazo`
+Run godazo example with default settings
+
+`% godazo`
 
 On your browser visit [`localhost:8080`](http://localhost:8080/) to see your presentation.
 
