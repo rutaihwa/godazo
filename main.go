@@ -70,7 +70,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Make Gin on release mode
+	// Make Gin be on release mode
 	gin.SetMode(gin.ReleaseMode)
 
 	// Web server router
@@ -85,7 +85,7 @@ func main() {
 	})
 
 	// Templates
-	router.LoadHTMLGlob("templates/*")
+	router.LoadHTMLGlob(filepath.Join(godazoProjectPath,"templates/*"))
 
 	// Static and media files
 	router.Static("/public", filepath.Join(godazoProjectPath, "/public"))
