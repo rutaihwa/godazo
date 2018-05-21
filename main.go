@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"encoding/json"
 	"path/filepath"
+	"strconv"
 )
 
 // Slide type
@@ -27,8 +28,33 @@ type Presentation struct {
 	Slides [] Slide
 }
 
-func main() {
+// Global variables
+var (
+	port                 int
+	presentationFilePath string
+	mediafilesPath       string
+)
 
+// Initialise godazo
+func init() {
+	flags()
+}
+
+// Flags to check on the commandline
+func flags() {
+	// Port
+	flag.IntVar(&port, "port", 8080, "Port to serve godazo")
+
+	// Presentation file
+	flag.StringVar(&presentationFilePath, "presentation", filepathFromGodazoPackage("/presentation/example.json"),
+		"Json file with slides")
+
+	// Media files
+	flag.StringVar(&mediafilesPath, "media", filepathFromGodazoPackage("/media"), "A directory with media files "+
+		"(photos and videos) for the presentation")
+}
+
+func filepathFromGodazoPackage(filename string) string {
 	// Path to godazo
 	godazoProjectPath, errorGodazoProjectPath := filepath.Abs(os.Getenv("GOPATH") + "/src/github.com/rutaihwa/godazo/")
 
@@ -38,25 +64,18 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Port
-	portPtr := flag.String("port", "8080", "Port to run godazo")
+	return filepath.Join(godazoProjectPath, filename)
+}
 
-	// Presentation file
-	presentationJson := flag.String("presentation", filepath.Join(godazoProjectPath ,"/presentation/example.json"),
-		"Json file with slides")
-
-	// Media files
-	mediaFiles := flag.String("media", filepath.Join(godazoProjectPath , "/media"), "A directory with media files "+
-		"(photos and videos) for the presentation")
-
+func main() {
 	// Parse user inputs
 	flag.Parse()
 
 	// Read presentation
-	file, errorReadingFile := ioutil.ReadFile(*presentationJson)
+	file, errorReadingFile := ioutil.ReadFile(presentationFilePath)
 
 	if errorReadingFile != nil {
-		fmt.Printf("// Error while reading file %s\n", *presentationJson)
+		fmt.Printf("// Error while reading file %s\n", presentationFilePath)
 		fmt.Printf("File error: %v\n", errorReadingFile)
 		os.Exit(1)
 	}
@@ -85,11 +104,11 @@ func main() {
 	})
 
 	// Templates
-	router.LoadHTMLGlob(filepath.Join(godazoProjectPath,"templates/*"))
+	router.LoadHTMLGlob(filepathFromGodazoPackage("templates/*"))
 
 	// Static and media files
-	router.Static("/public", filepath.Join(godazoProjectPath, "/public"))
-	router.Static("/media", *mediaFiles)
+	router.Static("/public", filepathFromGodazoPackage("/public"))
+	router.Static("/media", mediafilesPath)
 
 	// Route for presentation
 	router.GET("/", func(c *gin.Context) {
@@ -100,9 +119,8 @@ func main() {
 	})
 
 	// Where will godazo be running at
-	fmt.Println("godazo will start running at http://localhost:" + *portPtr)
+	fmt.Println("godazo will start running at http://localhost:" + strconv.Itoa(port))
 
 	// Running the server
-	router.Run(":" + *portPtr)
-
+	router.Run(":" + strconv.Itoa(port))
 }

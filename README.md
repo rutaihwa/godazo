@@ -23,7 +23,7 @@ On your browser visit [`localhost:8081`](http://localhost:8081/) to see your pre
 
 ## Thanks
 
-The project is written in Go, and make heavy dependence on Gin and Revealjs.
+The project is written in Go, and make heavy dependence on [Gin](https://github.com/gin-gonic/gin) and [Revealjs](https://github.com/hakimel/reveal.js/).
 
 ## Todo
 
