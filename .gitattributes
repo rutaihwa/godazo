@@ -1,2 +1,4 @@
 public/javascripts/reveal.js linguist-vendored
 public/stylesheets/* linguist-vendored
+public/javascripts/svg-icons linguist-vendored
+public/javascripts/webslides.min.js linguist-vendored
