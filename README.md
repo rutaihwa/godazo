@@ -1,5 +1,5 @@
 # godazo
-Stupid simple presenter written in Go.
+Stupid simple presenter or static site creator written in Go.
 
 ## Quick start
 Install godazo 
@@ -23,10 +23,12 @@ On your browser visit [`localhost:8081`](http://localhost:8081/) to see your pre
 
 ## Thanks
 
-The project is written in Go, and make heavy dependence on [Gin](https://github.com/gin-gonic/gin) and [Revealjs](https://github.com/hakimel/reveal.js/).
+The project is written in Go, and make heavy dependence on [Gin](https://github.com/gin-gonic/gin) and [webslides](https://github.com/webslides/webslides).
 
 ## Todo
 
 * Don't be evil test your code - Writing tests
 
 * Future Features?
+- GUI slide creator.
+- Import and export to simple popular formats.
